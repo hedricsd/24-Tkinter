@@ -30,22 +30,26 @@ def main():
     button = ttk.Button(frame, text='  Press for Message  ')
     button.grid()
     # -------------------------------------------------------------------------
-    # TODO: 5. After reading and understanding the m3e module,
+    # DONE: 5. After reading and understanding the m3e module,
     #   ** make your Button respond to a button-press **
     #   ** by printing   "Hello"  on the Console.     **
     # -------------------------------------------------------------------------
-
+    button['command'] = (lambda: print('Hello!'))
     # -------------------------------------------------------------------------
-    # TODO: 6. After reading and understanding the m4e module,
+    # DONE: 6. After reading and understanding the m4e module,
     #   -- Put an Entry box on the Frame.
     #   -- Put a second Button on the Frame.
     #   -- Make this new Button, when pressed, print "Hello"
     #        on the Console if the current string in the Entry box
     #        is the string 'ok', but print "Goodbye" otherwise.
     # -------------------------------------------------------------------------
-
+    button2 = ttk.Button(frame, text='Type ok')
+    button2.grid()
+    my_entry_box = ttk.Entry(frame)
+    my_entry_box.grid()
+    button2['command'] = (lambda: test_6(my_entry_box))
     # -------------------------------------------------------------------------
-    # TODO: 7.
+    # DONE: 7.
     #    -- Put a second Entry on the Frame.
     #    -- Put a third Button on the frame.
     #    -- Make this new Button respond to a button-press as follows:
@@ -67,12 +71,31 @@ def main():
     #      s = entry_box.get()
     #      n = int(s)
     ####################################################################
-
+    button3 = ttk.Button(frame, text='Type a number')
+    button3.grid()
+    entry_box2 = ttk.Entry(frame)
+    entry_box2.grid()
+    button3['command'] = (lambda: test_7(entry_box2, my_entry_box))
     # -------------------------------------------------------------------------
-    # TODO: 8. As time permits, do other interesting GUI things!
+    # DONE: 8. As time permits, do other interesting GUI things!
     # -------------------------------------------------------------------------
-
     window.mainloop()
+
+def test_6(entry_box):
+    if entry_box.get() == 'ok':
+        print('Hello')
+    else:
+        print('Goodbye')
+
+def test_7(n, s):
+    s_contents = s.get()
+    if s_contents == 'Ligma':
+        print('Ligma balls')
+    else:
+        n_contents = n.get()
+        for k in range(int(n_contents)):
+            print(s.get())
+
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
